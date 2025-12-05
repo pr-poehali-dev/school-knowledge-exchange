@@ -174,7 +174,7 @@ const Index = () => {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <Icon name="GraduationCap" size={24} />
                 </div>
-                <h1 className="text-xl font-bold">Школа 2087</h1>
+                <h1 className="text-xl font-bold">SkillSwap Школа 2087</h1>
                 <Icon name="Menu" size={20} className="ml-1" />
               </Button>
             </SheetTrigger>
@@ -184,7 +184,7 @@ const Index = () => {
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                     <Icon name="GraduationCap" size={24} />
                   </div>
-                  Школа 2087
+                  SkillSwap Школа 2087
                 </SheetTitle>
               </SheetHeader>
               <nav className="mt-8 flex flex-col gap-2">
