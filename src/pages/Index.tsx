@@ -171,9 +171,11 @@ const Index = () => {
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" className="flex items-center gap-2 hover:bg-primary/10">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <Icon name="GraduationCap" size={24} />
-                </div>
+                <img 
+                  src="https://cdn.poehali.dev/files/a70cb44a-bc9a-4985-9253-ef80ed866dc1.png" 
+                  alt="Логотип Школы 2087" 
+                  className="h-10 w-10 object-contain"
+                />
                 <h1 className="text-xl font-bold">SkillSwap Школа 2087</h1>
                 <Icon name="Menu" size={20} className="ml-1" />
               </Button>
@@ -181,9 +183,11 @@ const Index = () => {
             <SheetContent side="left" className="w-[300px] sm:w-[400px]">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                    <Icon name="GraduationCap" size={24} />
-                  </div>
+                  <img 
+                    src="https://cdn.poehali.dev/files/a70cb44a-bc9a-4985-9253-ef80ed866dc1.png" 
+                    alt="Логотип Школы 2087" 
+                    className="h-10 w-10 object-contain"
+                  />
                   SkillSwap Школа 2087
                 </SheetTitle>
               </SheetHeader>
