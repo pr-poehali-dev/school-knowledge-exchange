@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import Icon from '@/components/ui/icon';
 import { Progress } from '@/components/ui/progress';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 interface Student {
   id: number;
@@ -59,6 +60,7 @@ interface Event {
 const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [searchQuery, setSearchQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const achievements: Achievement[] = [
     { id: 'first-share', name: 'Первый конспект', icon: '📝', description: 'Поделился первым конспектом' },
@@ -239,36 +241,78 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Icon name="GraduationCap" size={24} />
-            </div>
-            <h1 className="text-xl font-bold">Школа 2087</h1>
-          </div>
-          
-          <nav className="hidden md:flex gap-6">
-            <Button variant={activeTab === 'home' ? 'default' : 'ghost'} onClick={() => setActiveTab('home')}>
-              <Icon name="Home" size={18} className="mr-2" />
-              Главная
-            </Button>
-            <Button variant={activeTab === 'students' ? 'default' : 'ghost'} onClick={() => setActiveTab('students')}>
-              <Icon name="Users" size={18} className="mr-2" />
-              Ученики
-            </Button>
-            <Button variant={activeTab === 'notes' ? 'default' : 'ghost'} onClick={() => setActiveTab('notes')}>
-              <Icon name="BookOpen" size={18} className="mr-2" />
-              Конспекты
-            </Button>
-            <Button variant={activeTab === 'messages' ? 'default' : 'ghost'} onClick={() => setActiveTab('messages')}>
-              <Icon name="MessageCircle" size={18} className="mr-2" />
-              Сообщения
-              {messages.filter(m => m.unread).length > 0 && (
-                <Badge className="ml-2 h-5 w-5 rounded-full p-0 flex items-center justify-center" variant="destructive">
-                  {messages.filter(m => m.unread).length}
-                </Badge>
-              )}
-            </Button>
-          </nav>
+          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-2 hover:bg-primary/10">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Icon name="GraduationCap" size={24} />
+                </div>
+                <h1 className="text-xl font-bold">Школа 2087</h1>
+                <Icon name="Menu" size={20} className="ml-1" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                    <Icon name="GraduationCap" size={24} />
+                  </div>
+                  Школа 2087
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="mt-8 flex flex-col gap-2">
+                <Button 
+                  variant={activeTab === 'home' ? 'default' : 'ghost'} 
+                  className="justify-start h-12"
+                  onClick={() => {
+                    setActiveTab('home');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <Icon name="Home" size={20} className="mr-3" />
+                  Главная
+                </Button>
+                <Button 
+                  variant={activeTab === 'students' ? 'default' : 'ghost'}
+                  className="justify-start h-12"
+                  onClick={() => {
+                    setActiveTab('students');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <Icon name="Users" size={20} className="mr-3" />
+                  Ученики
+                </Button>
+                <Button 
+                  variant={activeTab === 'notes' ? 'default' : 'ghost'}
+                  className="justify-start h-12"
+                  onClick={() => {
+                    setActiveTab('notes');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <Icon name="BookOpen" size={20} className="mr-3" />
+                  Конспекты
+                </Button>
+                <Button 
+                  variant={activeTab === 'messages' ? 'default' : 'ghost'}
+                  className="justify-start h-12"
+                  onClick={() => {
+                    setActiveTab('messages');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <Icon name="MessageCircle" size={20} className="mr-3" />
+                  Сообщения
+                  {messages.filter(m => m.unread).length > 0 && (
+                    <Badge className="ml-auto h-6 w-6 rounded-full p-0 flex items-center justify-center" variant="destructive">
+                      {messages.filter(m => m.unread).length}
+                    </Badge>
+                  )}
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
 
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon">
