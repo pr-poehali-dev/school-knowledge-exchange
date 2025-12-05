@@ -8,6 +8,7 @@ import HomeTab from '@/components/HomeTab';
 import StudentsTab from '@/components/StudentsTab';
 import NotesTab from '@/components/NotesTab';
 import MessagesTab from '@/components/MessagesTab';
+import SupportTab from '@/components/SupportTab';
 import { Student, Achievement, Note, Message, Event } from '@/components/types';
 
 const Index = () => {
@@ -241,6 +242,20 @@ const Index = () => {
                     </Badge>
                   )}
                 </Button>
+                <Button 
+                  variant={activeTab === 'support' ? 'default' : 'ghost'}
+                  className="justify-start h-12"
+                  onClick={() => {
+                    setActiveTab('support');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <Icon name="Heart" size={20} className="mr-3" />
+                  Психолог
+                  <Badge className="ml-2" variant="outline">
+                    Анонимно
+                  </Badge>
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>
@@ -262,6 +277,7 @@ const Index = () => {
           {activeTab === 'students' && <StudentsTab students={students} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
           {activeTab === 'notes' && <NotesTab notes={notes} />}
           {activeTab === 'messages' && <MessagesTab messages={messages} />}
+          {activeTab === 'support' && <SupportTab />}
         </div>
       </main>
     </div>
