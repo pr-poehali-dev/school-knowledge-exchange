@@ -243,7 +243,7 @@ const Index = () => {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
               <Icon name="GraduationCap" size={24} />
             </div>
-            <h1 className="text-xl font-bold">Школа Знаний</h1>
+            <h1 className="text-xl font-bold">Школа 2087</h1>
           </div>
           
           <nav className="hidden md:flex gap-6">
